@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
     "mongoose": "^7.0.2",
-    "moongose": "^1.0.0",
+    "mqtt": "^4.3.7",
     "nodemon": "^2.0.21"
   }
 }

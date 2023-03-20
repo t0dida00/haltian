@@ -1,8 +1,8 @@
-require("dotenv").config
+'use strict'
+require("dotenv").config({path:'./.env'})
 
-const {DATA_URL}= process.env
-
-console.log({DATA_URL})
+const{DATA_URL,THINGSEE_AIR,THINGSEE_ENVIRONMENT,URL,PORT,TOPIC,PROTOCOL }= process.env
 
 
-module.exports = {DATA_URL}
+
+module.exports = {DATA_URL,THINGSEE_AIR,THINGSEE_ENVIRONMENT,URL,PORT,TOPIC,PROTOCOL }
