@@ -19,9 +19,3 @@ client.on('message', function (topic, message) {
     "Received Message: " + message.toString() + "\nOn topic: " + topic
   );
 })
-
-
-// URL      : live-data.haltian.com
-// Port     : 1883
-// Password : none
-// Topic    : cloudext/json/pr/fi/office/#
