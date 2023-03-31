@@ -57,7 +57,6 @@ module.exports = {
           key: fs.readFileSync(key_newPath)}
         try {
           prgMqtt(MQTT_OPTION, fields.topic,(CALLBACK => {res.json(CALLBACK)}))
-         
         }
         catch (error) {
           return error

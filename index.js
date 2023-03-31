@@ -2,7 +2,12 @@ const express = require('express');
 const DB = require("./utilities/db")
 const app = express();
 const session = require('express-session');
+const mqttClient = require('./services/mqtt');
 
+
+const http = require('http');
+const initSocketIo = require('./services/socket');
+const server =  http.createServer(app)
 
 // const middleware = require("./middlewares/middleware")
 app.use(express.urlencoded({
@@ -26,8 +31,23 @@ app.use(express.json());
 
 app.use('/set-up', require('./routes/installation'));
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/socket.html');
+});
+
+// io.on('connection', (socket) => {
+//   socket.on('chat message', msg => {
+//     console.log(msg)
+//     io.emit('chat message', msg);
+//   });
+// });
+initSocketIo(server);
 const PORT = 3000
 
 app.listen(PORT, function () {
   console.log(`Server running at port ` + PORT);
 })
+
+server.listen(3001, () => {
+  console.log(`Socket.IO server running at http://localhost:3001/`);
+});

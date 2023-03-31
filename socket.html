@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO Test</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Socket.IO Test</h1>
+    <p id="message">Waiting for server...</p>
+    <ol id="message-list"></div>
+    <script>
+      const socket = io('http://localhost:3001');
+
+      socket.on('connect', () => {
+        console.log('Connected to server');
+        document.getElementById('message').innerHTML = 'Connected to server';
+      });
+
+      socket.on('disconnect', () => {
+        console.log('Disconnected from server');
+        document.getElementById('message').innerHTML = 'Disconnected from server';
+      });
+      socket.on('message', (message) => {
+  console.log(`Received message from server: ${message}`);
+  document.getElementById('message').innerHTML = `Received message from server: ${message}`;
+  const li = document.createElement('li');
+  li.textContent = message;
+
+  // Append the li element to the message list
+  const messageList = document.querySelector('#message-list');
+  messageList.appendChild(li);
+});
+    </script>
+  </body>
+</html>
