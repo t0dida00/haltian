@@ -39,10 +39,10 @@ app.get('/', (req, res) => {
 initSocketIo(server);
 const PORT = 3000
 
-app.listen(PORT, function () {
-  console.log(`Server running at port ` + PORT);
+app.listen(3001, function () {
+  console.log(`Server running at port ` + 3001);
 })
 
-server.listen(3001, () => {
-  console.log(`Socket.IO server running at http://localhost:3001/`);
+server.listen(PORT, () => {
+  console.log(`Socket.IO server running at http://localhost:3000/`);
 });
