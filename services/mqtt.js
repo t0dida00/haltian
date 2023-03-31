@@ -5,7 +5,7 @@ const messageHandler = require("./message-handler")
 // const MessageSchema = require("./controllers/messagesController")
 function prgMqtt(MQTT_OPTION, TOPIC, CALLBACK) {
  
-  if (client) {
+  if (global.client) {
     // MQTT client is already connected
     // Call callbacks with successful connection status
     console.log('Connected to MQTT already');
@@ -13,7 +13,9 @@ function prgMqtt(MQTT_OPTION, TOPIC, CALLBACK) {
   } else {
     // MQTT client is not connected
     client = mqtt.connect(MQTT_OPTION);
-   
+
+    
+
       client.on("connect", () => {
       console.log('Connected to MQTT broker');
       client.subscribe(TOPIC);
@@ -21,7 +23,7 @@ function prgMqtt(MQTT_OPTION, TOPIC, CALLBACK) {
       CALLBACK({ status: 200, "MQTT": 'Connected to MQTT broker ' })
     });
   }
-
+  global.client=client
  client.on("message", (topic, message) => {
    console.log("message is " + message);
     messageHandler(message.toString())

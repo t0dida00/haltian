@@ -69,6 +69,16 @@ module.exports = {
 
 
   },
+  disConnection: (req,res,next)=>{
+    if(global.client)
+    {
+      global.client.end()
+      global.client = null
+      console.log("ended")
+    }
+    res.send("Hahaha")
+    next()
+  }
 
 }
 

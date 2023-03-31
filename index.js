@@ -2,7 +2,7 @@ const express = require('express');
 const DB = require("./utilities/db")
 const app = express();
 const session = require('express-session');
-const mqttClient = require('./services/mqtt');
+
 
 
 const http = require('http');
@@ -35,12 +35,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/socket.html');
 });
 
-// io.on('connection', (socket) => {
-//   socket.on('chat message', msg => {
-//     console.log(msg)
-//     io.emit('chat message', msg);
-//   });
-// });
+
 initSocketIo(server);
 const PORT = 3000
 
