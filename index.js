@@ -2,6 +2,7 @@ const express = require('express');
 const DB = require("./utilities/db")
 const app = express();
 const session = require('express-session');
+var cors = require('cors')
 
 
 
@@ -18,6 +19,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.options('*', cors())
 
 app.use(express.json());
 // const options = {
