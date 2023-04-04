@@ -56,7 +56,7 @@ module.exports = {
           cert: fs.readFileSync(cert_newPath),
           key: fs.readFileSync(key_newPath)}
         try {
-          prgMqtt(MQTT_OPTION, fields.topic,(CALLBACK => {res.json(CALLBACK)}))
+          prgMqtt(MQTT_OPTION, fields.topic,(CALLBACK => {return res.json(CALLBACK)}))
         }
         catch (error) {
           return error
@@ -76,7 +76,7 @@ module.exports = {
       global.client = null
       console.log("ended")
     }
-    res.send("Hahaha")
+    res.send("Disconnected")
     next()
   }
 

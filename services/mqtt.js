@@ -19,7 +19,7 @@ function prgMqtt(MQTT_OPTION, TOPIC, CALLBACK) {
       client.on("connect", () => {
       console.log('Connected to MQTT broker');
       client.subscribe(TOPIC);
-      messageHandler('Connected to MQTT broker')
+      //messageHandler('Connected to MQTT broker')
       CALLBACK({ status: 200, "MQTT": 'Connected to MQTT broker ' })
     });
   }
@@ -33,7 +33,7 @@ function prgMqtt(MQTT_OPTION, TOPIC, CALLBACK) {
 
     client.on('error', function (error) {
     console.error('MQTT connection error:', error);
-    CALLBACK({ status: 401, "MQTT": 'MQTT connection error' })
+   
   });
 }
 
