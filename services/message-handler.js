@@ -38,13 +38,14 @@ function messageIOHandler(messages) {
                 break;
             case 12100:
 
-                format_message.elements.temp= messages["temp"]
-                format_message.elements.humd= messages["humd"]
-                format_message.elements.airp= messages["airp"]
-                if(messages["lght"] != null ||messages["lght"] != undefined)
-                {
-                    format_message.elements.light=messages["lght"]
-                }
+                // format_message.elements.temp= messages["temp"]
+                format_message.elements.temp = messages["temp"] !== null && messages["temp"] !== undefined ? messages["temp"] : format_message.elements.temp;
+                // format_message.elements.humd= messages["humd"]
+                format_message.elements.humd = messages["humd"] !== null && messages["humd"] !== undefined ? messages["humd"] : format_message.elements.humd;
+                //format_message.elements.airp= messages["airp"]
+                format_message.elements.airp = messages["airp"] !== null && messages["airp"] !== undefined ? messages["airp"] : format_message.elements.airp;
+                format_message.elements.light = messages["lght"] !== null && messages["lght"] !== undefined ? messages["lght"] : format_message.elements.light;
+
                 break;
             default:
                 break;
