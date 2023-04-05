@@ -1,8 +1,14 @@
 const socketIo = require('socket.io');
 const messageHandler = require("./message-handler")
+var cors = require('cors')
 function SocketIO(server) {
    
-  const io = socketIo(server);
+  const io = socketIo(server,{
+    cors:{
+       origin:'*',
+       credentials:true
+    }
+   });
   const messages = [
     'Hello from server!',
     'How are you?',

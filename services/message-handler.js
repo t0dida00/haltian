@@ -1,4 +1,6 @@
 const {getCurrentWeather} = require("./sunsetsunrise")
+
+const alerts = require("./alerts")
 var format_message = {
     elements: {
         light: 0,
@@ -12,7 +14,8 @@ var format_message = {
         time: Date(),
     },
     gateway: "",
-    devices: []
+    devices: [],
+    alerts: [],
 }
 getCurrentWeather((error, data) => {
     if (error) {
@@ -26,6 +29,7 @@ getCurrentWeather((error, data) => {
 function messageIOHandler(messages) {
 
     if (global.socket) {
+
         //String to object
         messages = JSON.parse(messages)
 
@@ -39,6 +43,7 @@ function messageIOHandler(messages) {
         }
 
         format_message.elements.time = Date.now()
+
         switch (messages["tsmId"]) {
             case 24100:
                 format_message.elements.co2 = messages["carbonDioxide"]
@@ -65,7 +70,19 @@ function messageIOHandler(messages) {
                 break;
         }
 
-
+        //Reset the alerts before adding new ones
+        format_message.alerts=[]
+        //Give alerts if there is wrong
+        if (alerts.checkTemperature(format_message.elements.temp)) {
+            format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp)) 
+          }
+          if (alerts.checkCo2(format_message.elements.co2)) {
+            format_message.alerts.push(alerts.checkCo2(format_message.elements.co2)) 
+        }
+        
+        // format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp)) 
+        // format_message.alerts.push(alerts.checkTemperature(format_message.elements.co2)) 
+        
         console.log("Message handler: ", format_message)
         global.socket.emit("message", JSON.stringify(format_message))
 
