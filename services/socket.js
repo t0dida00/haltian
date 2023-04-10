@@ -6,6 +6,7 @@ function SocketIO(server) {
   const io = socketIo(server,{
     cors:{
        origin:'*',
+       methods:["GET","POST"],
        credentials:true
     }
    });
