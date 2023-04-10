@@ -25,12 +25,12 @@ module.exports = {
         return;
       }
       const cert_oldPath = `${files.cert.filepath}`;
-      const cert_newPath = 'certificates/' + files.cert.originalFilename;
+     // const cert_newPath = 'certificates/' + files.cert.originalFilename;
       const key_oldPath = `${files.key.filepath}`;
-      const key_newPath = 'certificates/' + files.key.originalFilename;
-      const uploadCertificate = uploadFile(cert_oldPath, cert_newPath)
-      const uploadKey = uploadFile(key_oldPath, key_newPath)
-      const filePath = path.join(__dirname, "../certificates", 'MQTT_OPTION.txt');
+      //const key_newPath = 'certificates/' + files.key.originalFilename;
+      //const uploadCertificate = uploadFile(cert_oldPath, cert_newPath)
+     // const uploadKey = uploadFile(key_oldPath, key_newPath)
+      //const filePath = path.join(__dirname, "../certificates", 'MQTT_OPTION.txt');
       //console.log(filePath)
 
       //       var MQTT_OPTION_2 = `${fields.host},
@@ -53,8 +53,8 @@ module.exports = {
           port: fields.port,
           protocol: fields.protocol,
           rejectUnauthorized: false,
-          cert: fs.readFileSync(cert_newPath),
-          key: fs.readFileSync(key_newPath)}
+          cert: fs.readFileSync(cert_oldPath),
+          key: fs.readFileSync(key_oldPath)}
         try {
           prgMqtt(MQTT_OPTION, fields.topic,(CALLBACK => {return res.json(CALLBACK)}))
         }

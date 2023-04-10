@@ -1,41 +1,33 @@
-const fs = require("fs")
-const path = require("path")
-const directoryPath = './certificates/';
-const filePath = path.join(__dirname, "../certificates", 'MQTT_OPTION.txt');
-const session = require('express-session');
-const express = require('express');
+function EmitMessage(req, res, next) {
+  // Run the function immediately upon starting the server
+  runFunction();
 
-var MQTT_OPTION = {}
+  // Schedule the function to run every 5 minutes
+  setInterval(runFunction, 5 * 60 * 1000);
 
-module.exports = (req, res, next) => {
+  next();
+}
 
-  fs.readdir(directoryPath, (err, files) => {
-    if (err) {
-      console.error(err);
-      return;
+function runFunction() {
+  // Code for the function you want to run every 5 minutes goes here
+  //console.log(global.message)
+  //global.socket.emit("message", Date())
+   if (global.socket) {
+    if(global.message)
+    {
+      global.message.elements.time=Date.now()
+       global.socket.emit("message",JSON.stringify(global.message))
     }
-    const matchingFiles = files.filter((file) => path.extname(file) === ".txt");
-    if (matchingFiles.length > 0) {
    
-      fs.readFile( filePath, (err, data) => {
-        if (err) throw err;
-        var options= data.toString().split(",\n")
-        
-          MQTT_OPTION["host"]=options[0]
-          MQTT_OPTION["port"]=options[1]
-          MQTT_OPTION["protocol"]=options[2]
-          MQTT_OPTION["key"]=  fs.readFileSync(options[3])
-          MQTT_OPTION["cert"]=  fs.readFileSync(options[4])
-          MQTT_OPTION["rejectUnauthorized"]=false        
-         req.session.MQTT_OPTION = MQTT_OPTION
-         req.session.MQTT_TOPIC = options[5]
-      next()
-      });
+  
+  // console.log(Date())
+ 
+}
 
-    }
 
-    else {
-      return res.send("No certificates exists !!! Unauthorized")
-    }
-  })
-  }
+}
+
+
+module.exports ={
+  EmitMessage
+}

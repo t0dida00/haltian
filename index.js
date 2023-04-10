@@ -4,13 +4,11 @@ const app = express();
 const session = require('express-session');
 var cors = require('cors')
 
-
-
 const http = require('http');
 const initSocketIo = require('./services/socket');
 const server =  http.createServer(app)
 
-// const middleware = require("./middlewares/middleware")
+const {EmitMessage} = require("./middlewares/middleware")
 app.use(express.urlencoded({
   extended: true
 }));
@@ -19,7 +17,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-app.options('*', cors())
+
 
 app.use(express.json());
 // const options = {
@@ -30,6 +28,9 @@ app.use(express.json());
 //   // cert: fs.readFileSync(`./certificates/sales-cloudext-prfi00airquality.pem`),
 //   rejectUnauthorized: false
 // };
+
+
+app.use(EmitMessage);
 
 app.use('/set-up', require('./routes/installation'));
 
@@ -42,7 +43,7 @@ initSocketIo(server);
 const PORT = 3000
 
 app.listen(3001, function () {
-  console.log(`Server running at port ` + 3001);
+  console.log(`API Server running at port ` + 3001);
 })
 
 server.listen(PORT, () => {
