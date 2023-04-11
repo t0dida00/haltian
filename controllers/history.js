@@ -14,9 +14,10 @@ module.exports = {
 
         messageModel.find()
             .then(function (docs) {
-                console.log(docs);
+                
                 res.send({
-                    "list": docs
+                    "list": docs,
+                    "length": docs.length
                 });
 
             })

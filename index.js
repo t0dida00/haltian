@@ -2,6 +2,7 @@ const express = require('express');
 const DB = require("./utilities/db")
 const app = express();
 const session = require('express-session');
+const cors = require('cors')
 
 const http = require('http');
 const initSocketIo = require('./services/socket');
@@ -16,6 +17,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(cors())
 
 setInterval(dataSave, 5*60*1000);
 app.use(express.json());
