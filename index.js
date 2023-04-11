@@ -20,14 +20,6 @@ app.use(session({
 
 
 app.use(express.json());
-// const options = {
-//   host: 'a39cwxnxny8cvy.iot.eu-west-1.amazonaws.com',
-//   port: 8883,
-//   protocol: 'mqtt',
-//   // key: fs.readFileSync(`./certificates/sales-cloudext-prfi00airquality.key`),
-//   // cert: fs.readFileSync(`./certificates/sales-cloudext-prfi00airquality.pem`),
-//   rejectUnauthorized: false
-// };
 
 
 app.use(EmitMessage);

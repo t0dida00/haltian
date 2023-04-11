@@ -1,7 +1,6 @@
-
 const mongoose = require('mongoose');
 
-const messageSchema = new mongoose.Schema({
+const dataSchema = new mongoose.Schema({
   CO2: {
     type: Number,
     required: true
@@ -16,10 +15,10 @@ const messageSchema = new mongoose.Schema({
   },
   time: {
     type: Date,
-    default: Date.now
+    default: Date
   }
 });
 
-const MessageModel = mongoose.model('Data', messageSchema);
+const DataModel = mongoose.model('Data', dataSchema);
 
-module.exports = MessageModel;
+module.exports = DataModel;
