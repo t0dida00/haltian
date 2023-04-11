@@ -1,5 +1,5 @@
 const { getCurrentWeather } = require("./sunsetsunrise")
-const {dataSave} = require("./mongoSaver")
+
 const alerts = require("./alerts")
 
 var format_message = {
@@ -74,7 +74,7 @@ function messageIOHandler(messages) {
     if (alerts.checkCo2(format_message.elements.co2)) {
         format_message.alerts.push(alerts.checkCo2(format_message.elements.co2))
     }
-    dataSave(format_message)
+   
     //console.log("Message handler: ", format_message)
     // global.socket.emit("message", JSON.stringify(format_message))
     global.message = format_message

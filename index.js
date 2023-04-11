@@ -2,12 +2,11 @@ const express = require('express');
 const DB = require("./utilities/db")
 const app = express();
 const session = require('express-session');
-var cors = require('cors')
 
 const http = require('http');
 const initSocketIo = require('./services/socket');
 const server =  http.createServer(app)
-
+const {dataSave} = require("./services/mongoSaver")
 const {EmitMessage} = require("./middlewares/middleware")
 app.use(express.urlencoded({
   extended: true
@@ -18,14 +17,14 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
+setInterval(dataSave, 5*60*1000);
 app.use(express.json());
 
 
 app.use(EmitMessage);
 
 app.use('/set-up', require('./routes/installation'));
-
+app.use('/history', require('./routes/history'));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/socket.html');
 });

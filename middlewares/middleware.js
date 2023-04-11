@@ -1,3 +1,6 @@
+//const {dataSave} = require("../services/mongoSaver")
+
+
 function EmitMessage(req, res, next) {
   // Run the function immediately upon starting the server
   runFunction();
@@ -16,6 +19,7 @@ function runFunction() {
     if(global.message)
     {
       global.message.elements.time=Date.now()
+      // dataSave(global.message)
        global.socket.emit("message",JSON.stringify(global.message))
     }
    

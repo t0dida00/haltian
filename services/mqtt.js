@@ -13,9 +13,6 @@ function prgMqtt(MQTT_OPTION, TOPIC, CALLBACK) {
   } else {
     // MQTT client is not connected
     client = mqtt.connect(MQTT_OPTION);
-
-    
-
       client.on("connect", () => {
       console.log('Connected to MQTT broker');
       client.subscribe(TOPIC);

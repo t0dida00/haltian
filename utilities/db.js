@@ -4,6 +4,6 @@ const mongoose = require("mongoose")
 
 
 mongoose.set("strictQuery",false);
-mongoose.connect(DOTENV.DATA_URL).then(()=>console.log("Connecting to MongoDB successfully"))
+const connection = mongoose.connect(DOTENV.DATA_URL).then(()=>console.log("Connecting to MongoDB successfully"))
 
-module.exports = mongoose
+module.exports = connection
