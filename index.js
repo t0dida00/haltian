@@ -24,6 +24,8 @@ app.use(express.json());
 
 
 app.use(EmitMessage);
+const API_PORT = process.env.port || 3001;
+const SOCKET_PORT =  process.env.port || 3000;
 
 app.use('/set-up', require('./routes/installation'));
 app.use('/history', require('./routes/history'));
@@ -33,12 +35,12 @@ app.get('/', (req, res) => {
 
 
 initSocketIo(server);
-const PORT = 3000
 
-app.listen(3001, function () {
-  console.log(`API Server running at port ` + 3001);
+
+app.listen(API_PORT, function () {
+  console.log(`API Server running at port ` + API_PORT);
 })
 
-server.listen(PORT, () => {
-  console.log(`Socket.IO server running at http://localhost:3000/`);
+server.listen(SOCKET_PORT, () => {
+  console.log(`Socket.IO server running at http://localhost:${SOCKET_PORT}/`);
 });
