@@ -66,17 +66,18 @@ function messageIOHandler(messages) {
     }
 
     //Reset the alerts before adding new ones
+   
     format_message.alerts = []
     //Give alerts if there is wrong
     if (alerts.checkTemperature(format_message.elements.temp)) {
         format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp))
     }
     if (alerts.checkCo2(format_message.elements.co2)) {
+      
         format_message.alerts.push(alerts.checkCo2(format_message.elements.co2))
     }
    
-    //console.log("Message handler: ", format_message)
-    // global.socket.emit("message", JSON.stringify(format_message))
+    console.log("Message handler: ", format_message)
     global.message = format_message
     //}
 }

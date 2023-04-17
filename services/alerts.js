@@ -8,6 +8,7 @@ module.exports = {
         // if (currentTemperature > temperatureThreshold) {
         //     return 'Temperature is above threshold!';
         // }
+        console.log(currentTemperature)
         switch (currentTemperature) {
             case currentTemperature < 16:
                 return "Temperature is cold, let's open heater"
@@ -22,19 +23,18 @@ module.exports = {
         }
     },
     checkCo2: (currentCo2, callback) => {
+        console.log(currentCo2);
         // Replace 'currentTemperature' with your sensor reading
         // var co2Threshold = 1500;
         // if (currentCo2 > co2Threshold) {
         //     return 'CarbonDioxide is above threshold!';
         // }
-        switch (currentCo2) {
-            case currentCo2 <= 1000:
-                return "Co2 level is good"
-            case currentCo2 <= 1500:
-                return "Co2 level is normal"
-            case currentCo2 > 2000:
-                return "Co2 level is bad,ventilation recommended"
-    
+        if (currentCo2 <= 1000) {
+            return("Co2 level is good");
+        } else if (currentCo2 <= 1500) {
+            return("Co2 level is normal");
+        } else if (currentCo2 > 2000) {
+            return("Co2 level is bad,ventilation recommended");
         }
     }
 }
