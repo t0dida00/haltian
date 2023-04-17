@@ -24,8 +24,8 @@ app.use(express.json());
 
 
 app.use(EmitMessage);
-const API_PORT = 8080;
-const SOCKET_PORT =  8081;
+const API_PORT = 8081;
+const SOCKET_PORT =  8080;
 
 app.use('/set-up', require('./routes/installation'));
 app.use('/history', require('./routes/history'));
