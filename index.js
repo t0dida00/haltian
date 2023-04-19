@@ -19,7 +19,7 @@ app.use(session({
 }));
 app.use(cors())
 
-setInterval(dataSave, 30*60*1000);
+//setInterval(dataSave, 30*60*1000);
 app.use(express.json());
 
 
