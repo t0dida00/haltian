@@ -74,7 +74,7 @@ module.exports = {
     {
       global.client.end()
       global.client = null
-      console.log("ended")
+      console.log("Disconnected")
     }
     res.send("Disconnected")
     next()

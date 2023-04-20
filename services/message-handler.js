@@ -70,22 +70,26 @@ function messageIOHandler(messages) {
     //Reset the alerts before adding new ones
     format_message.AQI=alerts.AirQuanlityIndex(format_message.elements)
     format_message.Quality=alerts.AirQuality(format_message.AQI)
-    format_message.alerts = []
-    //Give alerts if there is wrong
-    if (alerts.checkTemperature(format_message.elements.temp)) {
-        format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp))
+    if(typeof(format_message.AQI)== "number")
+    {
+        format_message.alerts = []
+        //Give alerts if there is wrong
+        if (alerts.checkTemperature(format_message.elements.temp)) {
+            format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp))
+        }
+        if (alerts.checkCo2(format_message.elements.co2)) {
+          
+            format_message.alerts.push(alerts.checkCo2(format_message.elements.co2))
+        }
+        if (alerts.checkTVOC(format_message.elements.tvoc)) {
+            format_message.alerts.push(alerts.checkTVOC(format_message.elements.tvoc))
+        }
+        if (alerts.checkHumidity(format_message.elements.humd)) {
+          
+            format_message.alerts.push(alerts.checkHumidity(format_message.elements.humd))
+        }
     }
-    if (alerts.checkCo2(format_message.elements.co2)) {
-      
-        format_message.alerts.push(alerts.checkCo2(format_message.elements.co2))
-    }
-    if (alerts.checkTVOC(format_message.elements.tvoc)) {
-        format_message.alerts.push(alerts.checkTVOC(format_message.elements.tvoc))
-    }
-    if (alerts.checkHumidity(format_message.elements.humd)) {
-      
-        format_message.alerts.push(alerts.checkHumidity(format_message.elements.humd))
-    }
+   
     
     
     console.log("Message handler: ", format_message)
