@@ -22,8 +22,9 @@ app.use(cors())
 //setInterval(dataSave, 30*60*1000);
 app.use(express.json());
 
+initSocketIo(server);
 
-app.use(EmitMessage);
+
 const API_PORT = 8081;
 const SOCKET_PORT =  8080;
 
@@ -34,9 +35,8 @@ app.get('/', (req, res) => {
 });
 
 
-initSocketIo(server);
 
-
+setInterval(EmitMessage, 1*60*1000);
 app.listen(API_PORT, function () {
   console.log(`API Server running at port ` + API_PORT);
 })

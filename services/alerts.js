@@ -12,7 +12,7 @@ module.exports = {
         else if (currentTemperature >= 50) {
             return "The temperature is critical level, maybe a fire"
         }
-       
+
     },
     checkCo2: (currentCo2, callback) => {
         if (currentCo2 > 2000 && currentCo2 < 5000) {
@@ -20,29 +20,25 @@ module.exports = {
         } else if (currentCo2 >= 5000) {
             return "Very poor air quality, may cause nausea and dizziness"
         }
-       
+
     },
-    checkTVOC:(TVOC)=>{
-            if(TVOC >300 && TVOC <1000)
-            {
-                return "TVOC level is high,may cause some individuals to experience minor symptoms such as headaches or respiratory irritation."
-            }
-            else if(TVOC>= 1000)
-            {
-                return "TVOC level is critical, may cause more severe symptoms such as dizziness, nausea, and fatigue."
-            }   
+    checkTVOC: (TVOC) => {
+        if (TVOC > 300 && TVOC < 1000) {
+            return "TVOC level is high,may cause some individuals to experience minor symptoms such as headaches or respiratory irritation."
+        }
+        else if (TVOC >= 1000) {
+            return "TVOC level is critical, may cause more severe symptoms such as dizziness, nausea, and fatigue."
+        }
     },
-    checkHumidity:(humd)=>{
-        if(humd <30)
-        {
+    checkHumidity: (humd) => {
+        if (humd < 30) {
             return "Humidity is low, cause dry skin, respiratory irritation, and static electricity."
         }
-        else if(humd>60)
-        {
+        else if (humd > 60) {
             return "Humidity is critical,can trigger respiratory problems and allergies"
-        }   
+        }
     },
-    
+
     AirQuanlityIndex: (elements) => {
         const co2 = elements.co2
         const temp = elements.temp
@@ -50,13 +46,17 @@ module.exports = {
         const humd = elements.humd
         //IAQ = (TVOC + Temperature + humidity + CO2)/4
         if (co2 && temp && tvoc && humd) {
-            const tvoc_score =(tvoc/ 500) * 100
-            const temp_score = (20- Math.abs(20 - temp))/2
+            // This scaling ensures that the highest TVOC concentration measured indoors corresponds to the highest IAQI value of 500.
+            const tvoc_score = (tvoc / 500) * 100
+            // The formula first calculates the absolute difference between the standard temperature of 20°C and the actual indoor temperature
+            const temp_score = (20 - Math.abs(20 - temp)) / 2
+            //The formula first calculates the absolute difference between the standard humidity level of 45% and the actual indoor relative humidity
             const humd_score = Math.abs(humd - 45) * 2
+            //The concentration of CO2 is typically measured in parts per million (ppm). In order to map this measurement to an IAQI scale ranging from 0 to 500
             const co2_score = (co2 / 1000) * 100
-            const AQI_score = (tvoc_score +temp_score + humd_score + co2_score)/4
+            const AQI_score = (tvoc_score + temp_score + humd_score + co2_score) / 4
             //const AQI_score = (tvoc_score + temp_score) * 0.3 + (humd_score + co2_score) * 0.2
-          
+
             return Math.round(AQI_score)
         }
         else {
@@ -66,14 +66,14 @@ module.exports = {
     },
     AirQuality: (AQI_score) => {
         if (typeof AQI_score === "number" && AQI_score > 0) {
-            if (AQI_score <= 50) {
+            if (AQI_score <= 30) {
+                return "Excellent"
+            }
+            else if (AQI_score <= 50) {
                 return "Good"
             }
             else if (AQI_score <= 100) {
                 return "Moderate"
-            }
-            else if (AQI_score <= 150 ) {
-                return "High"
             }
             else if (AQI_score <= 150) {
                 return "Unhealthy for Sensitive Groups"
@@ -89,7 +89,7 @@ module.exports = {
             }
 
         }
-        else{
+        else {
             return "Analyzing"
         }
     }
