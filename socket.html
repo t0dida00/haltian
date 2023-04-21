@@ -9,8 +9,8 @@
     <p id="message">Waiting for server...</p>
     <ol id="message-list"></div>
     <script>
-      // const socket = io('https://air-quality.azurewebsites.net');
-      const socket = io('http://localhost:8080/');
+     const socket = io('https://air-quality.azurewebsites.net');
+      //const socket = io('http://localhost:8080/');
       socket.on('connect', () => {
         console.log('Connected to server');
         document.getElementById('message').innerHTML = 'Connected to server';
