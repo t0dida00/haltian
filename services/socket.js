@@ -13,12 +13,12 @@ function SocketIO(server) {
 
   io.on('connection', (socket) => {
    
-    console.log('Socket.IO client connected');
+    console.log(`Client ${socket.id} connected`);
 
     socket.on('disconnect', () => {
       console.log('Socket.IO client disconnected');
     });
-    global.socket = socket;
+    global.socket = io;
   
   
   });

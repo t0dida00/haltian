@@ -17,6 +17,8 @@ var format_message = {
     gateway: "",
     devices: [],
     alerts: [],
+    AQI:0,
+    Quality:""
 }
 
 getCurrentWeather((error, data) => {
@@ -64,19 +66,32 @@ function messageIOHandler(messages) {
         default:
             break;
     }
-
+    //console.log(alerts.AirQuanlityIndex(format_message.elements))
     //Reset the alerts before adding new ones
-   
-    format_message.alerts = []
-    //Give alerts if there is wrong
-    if (alerts.checkTemperature(format_message.elements.temp)) {
-        format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp))
+    format_message.AQI=alerts.AirQuanlityIndex(format_message.elements)
+    format_message.Quality=alerts.AirQuality(format_message.AQI)
+    if(typeof(format_message.AQI)== "number")
+    {
+        format_message.alerts = []
+        //Give alerts if there is wrong
+        if (alerts.checkTemperature(format_message.elements.temp)) {
+            format_message.alerts.push(alerts.checkTemperature(format_message.elements.temp))
+        }
+        if (alerts.checkCo2(format_message.elements.co2)) {
+          
+            format_message.alerts.push(alerts.checkCo2(format_message.elements.co2))
+        }
+        if (alerts.checkTVOC(format_message.elements.tvoc)) {
+            format_message.alerts.push(alerts.checkTVOC(format_message.elements.tvoc))
+        }
+        if (alerts.checkHumidity(format_message.elements.humd)) {
+          
+            format_message.alerts.push(alerts.checkHumidity(format_message.elements.humd))
+        }
     }
-    if (alerts.checkCo2(format_message.elements.co2)) {
-      
-        format_message.alerts.push(alerts.checkCo2(format_message.elements.co2))
-    }
    
+    
+    
     console.log("Message handler: ", format_message)
     global.message = format_message
     //}
