@@ -1,42 +1,68 @@
 
 // Function to check temperature and trigger alert
 
+function Message(element, index, alert) {
+    return {
+        element: element,
+        index: index,
+        alert: alert
+    };
+}
+
 module.exports = {
     checkTemperature: (currentTemperature, callback) => {
-        if (currentTemperature < 16) {
-            return "The temperature is so slow, may feel uncomfortable and increase the risk of respiratory problems"
+        if (currentTemperature <16) {
+            return Message("temperature", "deepskyblue", "The temperature is so slow, may feel uncomfortable and increase the risk of respiratory problems")
+            //return "The temperature is so slow, may feel uncomfortable and increase the risk of respiratory problems"
         }
         else if (currentTemperature > 30 && currentTemperature < 50) {
-            return "The temperature is so high, warning a potential fire"
+            return Message("temperature", "orange", "The temperature is so high, warning a potential fire")
+            //return "The temperature is so high, warning a potential fire"
         }
         else if (currentTemperature >= 50) {
-            return "The temperature is critical level, maybe a fire"
+            return Message("temperature", "red", "The temperature is critical level, maybe a fire")
+            //return "The temperature is critical level, maybe a fire"
         }
 
     },
     checkCo2: (currentCo2, callback) => {
         if (currentCo2 > 2000 && currentCo2 < 5000) {
-            return "Poor air quality, may cause fatigue and headache";
+           // return "Poor air quality, may cause fatigue and headache";
+            return Message("co2", "orange", "Poor air quality, may cause fatigue and headache")
         } else if (currentCo2 >= 5000) {
-            return "Very poor air quality, may cause nausea and dizziness"
+            return Message("co2", "red", "Very poor air quality, may cause nausea and dizziness")
+           // return "Very poor air quality, may cause nausea and dizziness"
         }
 
     },
     checkTVOC: (TVOC) => {
-        if (TVOC > 300 && TVOC < 1000) {
-            return "TVOC level is high,may cause some individuals to experience minor symptoms such as headaches or respiratory irritation."
+        if (TVOC >= 300 && TVOC < 1000) {
+            // return "TVOC level is high,may cause some individuals to experience minor symptoms such as headaches or respiratory irritation."
+            return Message("tvoc", "orange", "TVOC level is high,may cause some individuals to experience minor symptoms such as headaches or respiratory irritation.")
+
         }
+        // if (TVOC < 1000) {
+        //     return "TVOC level is high,may cause some individuals to experience minor symptoms such as headaches or respiratory irritation."
+        // }
         else if (TVOC >= 1000) {
-            return "TVOC level is critical, may cause more severe symptoms such as dizziness, nausea, and fatigue."
+            return Message("tvoc", "red", "TVOC level is critical, may cause more severe symptoms such as dizziness, nausea, and fatigue.")
+           // return "TVOC level is critical, may cause more severe symptoms such as dizziness, nausea, and fatigue."
         }
     },
     checkHumidity: (humd) => {
+
         if (humd < 30) {
-            return "Humidity is low, cause dry skin, respiratory irritation, and static electricity."
+            return Message("humidity", "yellow", "Humidity is low, cause dry skin, respiratory irritation, and static electricity.")
         }
+        // if (humd < 30) {
+        //     return "Humidity is low, cause dry skin, respiratory irritation, and static electricity."
+        // }
         else if (humd > 60) {
-            return "Humidity is critical,can trigger respiratory problems and allergies"
+            return Message("humidity", "red", "Humidity is critical,can trigger respiratory problems and allergies")
+            //return "Humidity is critical,can trigger respiratory problems and allergies"
+
         }
+
     },
 
     AirQuanlityIndex: (elements) => {

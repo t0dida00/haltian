@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 
 
 
-setInterval(EmitMessage, 1*60*1000);
+setInterval(EmitMessage,5*60*1000);
 app.listen(API_PORT, function () {
   console.log(`API Server running at port ` + API_PORT);
 })
