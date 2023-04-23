@@ -18,15 +18,34 @@ var format_message = {
     devices: [],
     alerts: [],
     AQI:0,
-    Quality:""
+    Quality:"",
+    outdoor:{
+        aqi:0,
+        temp:0,
+        app_temp:0,
+        humidity:0,
+        wind_spd:0,
+        ob_time:"",
+        description:""
+    }
 }
 
 getCurrentWeather((error, data) => {
     if (error) {
         console.log("Error fetching current weather:", error);
     } else {
+  
         format_message.elements.sunset = data["sunset"]
         format_message.elements.sunrise = data["sunrise"]
+        format_message.outdoor = { aqi_outdoor: data["aqi"],
+        app_temp: data["app_temp"],
+        temperature:data["temp"],
+        humidity:data["rh"],
+        wind_spd:data["wind_spd"],
+        ob_time:data["ob_time"],
+        description:data["weather"]["description"]
+
+       }
 
     }
 });
