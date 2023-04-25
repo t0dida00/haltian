@@ -36,6 +36,32 @@ a.	MongoDB Cloud: the data will be saved every 30 minutes
 b.	Display: the data will be shown on UI every 5 minutes after the data comes and is formatted.
 5.	A user can check history of Temperature, Humidity and Carbon dioxide in the history pages, the data comes from MongoDB
 
+## Data schema
+
+![image](https://user-images.githubusercontent.com/70305254/234362655-3b42f9c5-5ac5-4bf0-9490-92f1b06200fe.png)
+
+```
+const messageSchema = new mongoose.Schema({
+  CO2: {
+    type: Number,
+    required: true
+  },
+  humidity: {
+    type: Number,
+    required: true
+  },
+  temperature: {
+    type: Number,
+    required: true
+  },
+  time: {
+    type: Date,
+    default: Date.now
+  }
+});
+```
+
+
 
 ## Alerts and thresholds
 <img width="637" alt="Screenshot 2023-04-25 at 16 10 07" src="https://user-images.githubusercontent.com/70305254/234286666-2e389c5d-a33c-4900-b7ba-61b57f0110ec.png">
