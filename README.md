@@ -2,6 +2,7 @@
 
 The project aimed to create an indoor air quality monitoring application using Thingsee Air and Environment sensors. The app would display carbon dioxide, humidity, temperature, light level, air pressure, and sunrise/sunset times, and alert the user if any readings were concerning. The app also included a history feature for administrators to view past data. The app was designed to be dynamic, allowing users to input host URL, port, and topic and select the protocol and necessary certificates.
 
+
 ## Technologies
 
 Server-side: NodeJs (v16.14.x) – ExpressJS(v4.18.x). 
@@ -13,6 +14,19 @@ Protocol: mqtt, socketIO.
 Equipments: the Thingsee Air, Enviroment and Gateway sensors. 
 
 Database: MongoDB. 
+
+## Tools:
+Coding: Visual code.
+
+UX/UI draft: Figma
+
+Project management: Trello
+
+API testing: Postman
+
+Hosting: Microsoft Azure + Docker
+
+References: Google + ChatGPT
 
 ## Live version links
 
