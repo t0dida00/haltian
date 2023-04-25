@@ -23,12 +23,6 @@ Frontend :https://main--lustrous-platypus-be1445.netlify.app/?fbclid=IwAR2N_vHAJ
 + Dashboard: A dashboard that provides an overview of the current environmental conditions in the location, including CO2 levels, air pressure, humidity, temperature, light level and TVOC levels. This dashboard could display the data in a clear and visually appealing way, such as with graphs, charts, and other data visualizations. Besides, it provides the outdoor weather which is getting from the weather API
 + Alerts: The web application could include alerts that notify users when environmental conditions exceed certain thresholds. For example, if the CO2 level reaches a certain threshold, the web application could send an email or push notification to the user to alert them to the issue.
 + Historical data: The web application could include a historical data feature that allows users to view past environmental conditions for a specific location. This feature could include graphs or other data visualizations that show trends over time for each environmental parameter.
-## Alerts and thresholds
-<img width="637" alt="Screenshot 2023-04-25 at 16 10 07" src="https://user-images.githubusercontent.com/70305254/234286666-2e389c5d-a33c-4900-b7ba-61b57f0110ec.png">
-<img width="629" alt="Screenshot 2023-04-25 at 16 10 47" src="https://user-images.githubusercontent.com/70305254/234286826-f2df94fc-c4d1-4457-b2b8-41b973d88d08.png">
-<img width="609" alt="Screenshot 2023-04-25 at 16 10 58" src="https://user-images.githubusercontent.com/70305254/234286878-390e38d1-5d47-4ba2-af7c-f67c573daec3.png">
-<img width="609" alt="Screenshot 2023-04-25 at 16 11 12" src="https://user-images.githubusercontent.com/70305254/234286943-4fb1f0a9-810f-416a-a08b-f2743e425e20.png">
-<img width="630" alt="Screenshot 2023-04-25 at 16 11 37" src="https://user-images.githubusercontent.com/70305254/234287053-8612192c-9b04-4d7e-9db0-20fa32d1ed0a.png">
 
 ## Application Architecture
 
@@ -42,6 +36,13 @@ a.	MongoDB Cloud: the data will be saved every 30 minutes
 b.	Display: the data will be shown on UI every 5 minutes after the data comes and is formatted.
 5.	A user can check history of Temperature, Humidity and Carbon dioxide in the history pages, the data comes from MongoDB
 
+
+## Alerts and thresholds
+<img width="637" alt="Screenshot 2023-04-25 at 16 10 07" src="https://user-images.githubusercontent.com/70305254/234286666-2e389c5d-a33c-4900-b7ba-61b57f0110ec.png">
+<img width="629" alt="Screenshot 2023-04-25 at 16 10 47" src="https://user-images.githubusercontent.com/70305254/234286826-f2df94fc-c4d1-4457-b2b8-41b973d88d08.png">
+<img width="609" alt="Screenshot 2023-04-25 at 16 10 58" src="https://user-images.githubusercontent.com/70305254/234286878-390e38d1-5d47-4ba2-af7c-f67c573daec3.png">
+<img width="609" alt="Screenshot 2023-04-25 at 16 11 12" src="https://user-images.githubusercontent.com/70305254/234286943-4fb1f0a9-810f-416a-a08b-f2743e425e20.png">
+<img width="630" alt="Screenshot 2023-04-25 at 16 11 37" src="https://user-images.githubusercontent.com/70305254/234287053-8612192c-9b04-4d7e-9db0-20fa32d1ed0a.png">
 
 
 
