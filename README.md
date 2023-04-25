@@ -67,17 +67,11 @@ npm dev
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
+Microsoft Azure.
 
 ## Authors
 Dinh Dang Khoa - t0dida00@students.oamk.fi
+
 Duong Pham - t0phtr00@students.oamk.fi
 
 ## Captures of Application
@@ -87,3 +81,45 @@ Duong Pham - t0phtr00@students.oamk.fi
 <img width="1266" alt="Screenshot 2023-04-25 at 16 15 12" src="https://user-images.githubusercontent.com/70305254/234287960-734c832f-72b7-4cc5-8a52-d1bde9d0a587.png">
 
 <img width="797" alt="Screenshot 2023-04-25 at 16 16 07" src="https://user-images.githubusercontent.com/70305254/234288199-63c7a72e-9164-4c6b-8f7d-cf627995dc89.png">
+
+## Notes
+
+The application is using MQTT protocol and connects with the Thingsee Air and Thingsee Environment sensors only. 
+
+Only one topic is subscribed in one period. 
+
+When a topic is subscribed already,it can not subscribe more topic. 
+
+The Indoor Air Quality score is only calculated when humidity, tvoc, temperature, carbon dioxide are collected
+
+The Indoor Air Quality is only relative, not absolute
+
+The thresholds and alerts are referenced from online sources and ChatGPT 
+
+The elements display on the screen when the sensors return the data every 5 minutes (development)/ 30 minutes(production) 
+
+The data is saved on MongoDB every 5 minutes (development)/ 30 minutes(production) 
+
+Validations are not applied in this project. All inputs should be valid. 
+
+## References
+
+The outdoor weather API : https://www.weatherbit.io/api 
+
+The Thingsee Air: https://support.haltian.com/knowledgebase/thingsee-air-quality-profile-24/ 
+
+The Thingsee Environment: https://support.haltian.com/knowledgebase/environment-profile-12000-12999/ 
+
+The Thingsee connection / MQTT broker: https://support.haltian.com/knowledgebase/open-mqtt-data/ 
+
+MongoDB: https://www.mongodb.com/ 
+
+Microsoft Azure hosting : https://azure.microsoft.com/en-us 
+
+The Co2 levels and how it effects to human body: https://www.heimantech.com/news/index.php?type=detail&id=75 
+
+The humidity levels and how it effects to live enviroment: https://www.airthings.com/resources/everything-you-need-to-know-about-humidity 
+
+The TVOC levels and how it effects to human body: https://learn.kaiterra.com/en/resources/understanding-tvoc-volatile-organic-compounds 
+
+https://sorel.de/en/indoor-air-quality-index-in-hvac-applications/ 
