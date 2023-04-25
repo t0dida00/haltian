@@ -31,6 +31,7 @@ References: Google + ChatGPT
 ## Live version links
 
 Backend : https://air-quality.azurewebsites.net/
+
 Frontend :https://main--lustrous-platypus-be1445.netlify.app/?fbclid=IwAR2N_vHAJqSPX_s2CT2HDm9qV_BIK6CQ5HPsjPOqm46fJxKRLDKvtBvkXYQ
 
 ## Main Features
