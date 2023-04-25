@@ -14,9 +14,10 @@ Equipments: the Thingsee Air, Enviroment and Gateway sensors.
 
 Database: MongoDB. 
 
-## Source
+## Live version links
 
-Live: https://main--lustrous-platypus-be1445.netlify.app/?fbclid=IwAR2N_vHAJqSPX_s2CT2HDm9qV_BIK6CQ5HPsjPOqm46fJxKRLDKvtBvkXYQ
+Backend : https://air-quality.azurewebsites.net/
+Frontend :https://main--lustrous-platypus-be1445.netlify.app/?fbclid=IwAR2N_vHAJqSPX_s2CT2HDm9qV_BIK6CQ5HPsjPOqm46fJxKRLDKvtBvkXYQ
 
 ## Main Features
 + Dashboard: A dashboard that provides an overview of the current environmental conditions in the location, including CO2 levels, air pressure, humidity, temperature, light level and TVOC levels. This dashboard could display the data in a clear and visually appealing way, such as with graphs, charts, and other data visualizations. Besides, it provides the outdoor weather which is getting from the weather API
@@ -28,6 +29,21 @@ Live: https://main--lustrous-platypus-be1445.netlify.app/?fbclid=IwAR2N_vHAJqSPX
 <img width="609" alt="Screenshot 2023-04-25 at 16 10 58" src="https://user-images.githubusercontent.com/70305254/234286878-390e38d1-5d47-4ba2-af7c-f67c573daec3.png">
 <img width="609" alt="Screenshot 2023-04-25 at 16 11 12" src="https://user-images.githubusercontent.com/70305254/234286943-4fb1f0a9-810f-416a-a08b-f2743e425e20.png">
 <img width="630" alt="Screenshot 2023-04-25 at 16 11 37" src="https://user-images.githubusercontent.com/70305254/234287053-8612192c-9b04-4d7e-9db0-20fa32d1ed0a.png">
+
+## Application Architecture
+
+![12](https://user-images.githubusercontent.com/70305254/234361984-ef6c3c4f-371e-43f2-a27f-2ed06681168c.PNG)
+
+1.	A user needs to input the mqtt client information to connect to the Thingsee mqtt Broker.
+2.	The application will connect to the Gateway sensor through mqtt protocol to get data from sensors.
+3.	When the data comes, it will be handled by a handler such as formatting the da-ta, checking the threshold.
+4.	After the data is analyzed, it will be saved to MongoDB and displayed to UI.
+a.	MongoDB Cloud: the data will be saved every 30 minutes
+b.	Display: the data will be shown on UI every 5 minutes after the data comes and is formatted.
+5.	A user can check history of Temperature, Humidity and Carbon dioxide in the history pages, the data comes from MongoDB
+
+
+
 
 ## Installing
 
