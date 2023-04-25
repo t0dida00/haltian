@@ -18,43 +18,51 @@ Database: MongoDB.
 
 Live: https://main--lustrous-platypus-be1445.netlify.app/?fbclid=IwAR2N_vHAJqSPX_s2CT2HDm9qV_BIK6CQ5HPsjPOqm46fJxKRLDKvtBvkXYQ
 
+## Main Features
++ Dashboard: A dashboard that provides an overview of the current environmental conditions in the location, including CO2 levels, air pressure, humidity, temperature, light level and TVOC levels. This dashboard could display the data in a clear and visually appealing way, such as with graphs, charts, and other data visualizations. Besides, it provides the outdoor weather which is getting from the weather API
++ Alerts: The web application could include alerts that notify users when environmental conditions exceed certain thresholds. For example, if the CO2 level reaches a certain threshold, the web application could send an email or push notification to the user to alert them to the issue.
++ Historical data: The web application could include a historical data feature that allows users to view past environmental conditions for a specific location. This feature could include graphs or other data visualizations that show trends over time for each environmental parameter.
+## Alerts and thresholds
+<img width="637" alt="Screenshot 2023-04-25 at 16 10 07" src="https://user-images.githubusercontent.com/70305254/234286666-2e389c5d-a33c-4900-b7ba-61b57f0110ec.png">
+<img width="629" alt="Screenshot 2023-04-25 at 16 10 47" src="https://user-images.githubusercontent.com/70305254/234286826-f2df94fc-c4d1-4457-b2b8-41b973d88d08.png">
+<img width="609" alt="Screenshot 2023-04-25 at 16 10 58" src="https://user-images.githubusercontent.com/70305254/234286878-390e38d1-5d47-4ba2-af7c-f67c573daec3.png">
+<img width="609" alt="Screenshot 2023-04-25 at 16 11 12" src="https://user-images.githubusercontent.com/70305254/234286943-4fb1f0a9-810f-416a-a08b-f2743e425e20.png">
+<img width="630" alt="Screenshot 2023-04-25 at 16 11 37" src="https://user-images.githubusercontent.com/70305254/234287053-8612192c-9b04-4d7e-9db0-20fa32d1ed0a.png">
 
 ## Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+Cloning the project
 ```
-Give the example
+git clone https://github.com/t0dida00/haltian.git
 ```
 
-And repeat
+Installing packages
 
 ```
-until finished
+npm i 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+At socket.html line 12:
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
 
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+const socket = io('https://air-quality.azurewebsites.net');
 
 ```
-Give an example
+change to
+```
+const socket = io('localhost](http://localhost:8080/)');
+
+```
+Running application. 
+```
+npm start 
+
+```
+or
+```
+npm dev 
+
 ```
 
 ## Deployment
@@ -67,26 +75,15 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
+Dinh Dang Khoa - t0dida00@students.oamk.fi
+Duong Pham - t0phtr00@students.oamk.fi
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+## Captures of Application
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+<img width="763" alt="Screenshot 2023-04-25 at 16 14 55" src="https://user-images.githubusercontent.com/70305254/234287879-602b639c-749e-4985-a645-2e41e5454715.png">
 
-## License
+<img width="1266" alt="Screenshot 2023-04-25 at 16 15 12" src="https://user-images.githubusercontent.com/70305254/234287960-734c832f-72b7-4cc5-8a52-d1bde9d0a587.png">
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+<img width="797" alt="Screenshot 2023-04-25 at 16 16 07" src="https://user-images.githubusercontent.com/70305254/234288199-63c7a72e-9164-4c6b-8f7d-cf627995dc89.png">
