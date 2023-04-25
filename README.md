@@ -1,4 +1,4 @@
-# THE INDOOR AIR QUALITY MONITORING
+# INDOOR AIR QUALITY MONITORING
 
 The project aimed to create an indoor air quality monitoring application using Thingsee Air and Environment sensors. The app would display carbon dioxide, humidity, temperature, light level, air pressure, and sunrise/sunset times, and alert the user if any readings were concerning. The app also included a history feature for administrators to view past data. The app was designed to be dynamic, allowing users to input host URL, port, and topic and select the protocol and necessary certificates.
 
